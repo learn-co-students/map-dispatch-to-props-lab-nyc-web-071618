@@ -9,6 +9,7 @@ export default function manageRestaurants(state = {
         restaurants: [...state.restaurants, action.restaurant]
       }
 
+
     default:
       return state;
 
