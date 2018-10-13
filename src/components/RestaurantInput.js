@@ -17,16 +17,17 @@ export class RestaurantInput extends Component {
 
   handleOnLocationChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      location: event.target.value
     });
   }
 
   handleOnSubmit = event => {
     event.preventDefault();
-    // add missing code
+    this.props.addRestaurant(this.state);
   }
 
   render() {
+    console.log(this.state)
     return(
       <form onSubmit={(event) => this.handleOnSubmit(event)}>
         <p>
@@ -34,14 +35,16 @@ export class RestaurantInput extends Component {
             type="text"
             onChange={(event) => this.handleOnNameChange(event)}
             id="name"
-            placeholder="restaurant name" />
+            placeholder="restaurant name"
+            />
         </p>
         <p>
           <input
             type="text"
             onChange={(event) => this.handleOnLocationChange(event)}
             id="location"
-            placeholder="location" />
+            placeholder="location" 
+            />
         </p>
         <input type="submit" />
       </form>
@@ -50,5 +53,6 @@ export class RestaurantInput extends Component {
 };
 
 
+
 //connect this component by wrapping RestaurantInput below
-export default RestaurantInput
+export default connect(null,{ addRestaurant })(RestaurantInput)
